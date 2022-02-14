@@ -11,7 +11,7 @@ const fs                = require('fs');
 const config            = require('./config/main.json');
 
 // engine
-app.engine('hbs', exphbs({
+app.engine('hbs', exphbs.engine({
     helpers: {
         json: function (context) { return JSON.stringify(context); }
     }
