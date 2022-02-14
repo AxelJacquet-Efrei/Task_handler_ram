@@ -3,7 +3,7 @@ This respository allows me to install the basics of an Express, HBS and MongoDB 
 
 ## Installation
 ```
-git clone https://github.com/KalinkaGit/EHM-template.git
+git clone https://github.com/KalinkaGit/EHM-template.git ./
 npm i
 node server.js
 ```
