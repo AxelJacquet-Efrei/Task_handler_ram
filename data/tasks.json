@@ -1,0 +1,23 @@
+{
+    "0": {
+        "name": "Faut faire des trucs",
+        "description": "Faut faire des trucs zbi",
+        "startDate": "2021-01-01",
+        "endDate": "2021-01-02",
+        "status": "todo"
+    },
+    "1": {
+        "name": "Une autre tâche",
+        "description": "Une autre tâche zbi",
+        "startDate": "2021-01-01",
+        "endDate": "2021-01-02",
+        "status": "inprogress"
+    },
+    "2": {
+        "name": "Une belle tâche",
+        "description": "Tu préfères moi ou ton père ?!",
+        "startDate": "2021-02-01",
+        "endDate": "2021-02-02",
+        "status": "finish"
+    }
+}
