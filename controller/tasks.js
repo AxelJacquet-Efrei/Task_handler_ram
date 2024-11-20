@@ -64,8 +64,8 @@ exports.updateTask = (req, res) => {
 exports.deleteTask = (req, res) => {
     const { id } = req.params; // Récupérer l'ID de la tâche à supprimer
     deleteTask(tasks,id)
-    res.json(tasks);
-
+    saveTasks(tasks)
+    res.status(200)
 };
 
 
