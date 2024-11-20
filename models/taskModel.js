@@ -41,6 +41,11 @@ const getTasksByName = (tasks, name) => {
     return tasks.filter(task => task.name === name);
 }
 
+const deleteTask = (tasks, id) => {
+    const index = tasks.findIndex(task => task.id === id);
+    tasks.splice(index, 1);
+}
+
 const saveTasks = (tasks) => {
     fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2));
 }
@@ -54,5 +59,6 @@ module.exports = {
     modifyTaskEndDate,
     modifyTaskStatus,
     getTaskById,
+    deleteTask,
     getTasksByName
 };
