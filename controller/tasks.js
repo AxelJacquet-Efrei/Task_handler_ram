@@ -7,7 +7,8 @@ const {
     modifyTaskEndDate,
     modifyTaskStatus,
     getTaskById,
-    getTasksByName
+    deleteTask,
+    getTasksByName,
 } = require('../model/tasks');
 
 // **Fonctions du contrôleur**
@@ -61,18 +62,28 @@ exports.updateTask = (req, res) => {
 };
 
 exports.deleteTask = (req, res) => {
-    const { id } = req.params;
-    const tasks = getTasks();
-    const taskIndex = tasks.findIndex(task => task.id === parseInt(id));
-    if (taskIndex === -1) {
-        return res.status(404).json({ error: "Tâche introuvable" });
+    const { id } = req.params; // Récupérer l'ID de la tâche à supprimer
+    const tasks = taskModel.getTasks(); // Obtenir la liste actuelle des tâches
+
+    // Parcourir les tâches pour trouver celle à supprimer
+    let taskIndex = -1;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === parseInt(id)) { // Comparer l'ID (en tant que nombre)
+            taskIndex = i;
+            break;
+        }
     }
 
-    // Suppression de la tâche
-    tasks.splice(taskIndex, 1);
-    saveTasks(tasks);
-    res.json({ message: "Tâche supprimée" });
+    if (taskIndex === -1) {
+        // Si l'index est toujours -1, la tâche n'a pas été trouvée
+        return res.status(404).send('Tâche introuvable');
+    }
+
+    // Sauvegarder les tâches mises à jour
+    deleteTask(tasks,taskIndex)
+
 };
+
 
 exports.getTasksByStatus = (req, res) => {
     const { status } = req.query;
